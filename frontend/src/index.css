@@ -1,0 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(34, 211, 238, 0.2), transparent 25%),
+    radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.18), transparent 24%),
+    linear-gradient(180deg, #050713 0%, #0b0f26 45%, #050817 100%);
+  color: #ecf4ff;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  width: 36vw;
+  height: 36vw;
+  border-radius: 999px;
+  filter: blur(50px);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  background: #22d3ee;
+  top: -10vw;
+  left: -8vw;
+  animation: orbDriftA 15s ease-in-out infinite;
+}
+
+body::after {
+  background: #a855f7;
+  bottom: -12vw;
+  right: -9vw;
+  animation: orbDriftB 19s ease-in-out infinite;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a1024;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2dd4bf, #ff7a59);
+  border-radius: 999px;
+}
+
+.glass-panel {
+  background: linear-gradient(180deg, rgba(12, 18, 40, 0.84), rgba(8, 12, 28, 0.76));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(18px);
+}
+
+button {
+  transition: transform 200ms ease, box-shadow 220ms ease, filter 220ms ease;
+}
+
+button:hover {
+  filter: saturate(1.08);
+}
+
+.hero-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+.font-title {
+  font-family: 'Sora', 'Space Grotesk', 'Segoe UI', sans-serif;
+}
+
+.landing-shell {
+  background:
+    radial-gradient(circle at 12% 15%, rgba(52, 211, 153, 0.2), transparent 24%),
+    radial-gradient(circle at 82% 18%, rgba(56, 189, 248, 0.2), transparent 27%),
+    linear-gradient(135deg, rgba(8, 16, 42, 0.9) 0%, rgba(8, 10, 24, 0.98) 45%, rgba(5, 8, 20, 0.99) 100%);
+  box-shadow: 0 24px 100px rgba(3, 7, 20, 0.82);
+}
+
+.landing-shell .space-y-7,
+.landing-blueprint {
+  transition: transform 220ms ease-out;
+}
+
+.landing-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.95), rgba(168, 85, 247, 0.3));
+  box-shadow: 0 0 14px rgba(34, 211, 238, 0.55);
+  animation-name: particleDrift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.cursor-trail-dot {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.45), rgba(168, 85, 247, 0));
+  box-shadow: 0 0 22px rgba(34, 211, 238, 0.45);
+}
+
+.mission-confetti {
+  position: absolute;
+  top: 12px;
+  width: 8px;
+  height: 12px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, rgba(34, 211, 238, 0.95), rgba(168, 85, 247, 0.9));
+  animation: confettiDrop 620ms ease-out forwards;
+}
+
+.intro-stage {
+  background: linear-gradient(135deg, rgba(5, 9, 28, 0.95), rgba(10, 14, 35, 0.92));
+  box-shadow: 0 30px 110px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.intro-background {
+  background:
+    radial-gradient(circle at 20% 18%, rgba(34, 211, 238, 0.25), transparent 32%),
+    radial-gradient(circle at 84% 20%, rgba(168, 85, 247, 0.25), transparent 36%),
+    linear-gradient(180deg, rgba(5, 8, 22, 0.95), rgba(3, 8, 18, 0.98));
+}
+
+.intro-pulse {
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.32), rgba(168, 85, 247, 0.08), rgba(0, 0, 0, 0));
+}
+
+.intro-head,
+.intro-body,
+.intro-arm {
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.82), rgba(71, 85, 105, 0.88));
+  box-shadow: 0 0 26px rgba(34, 211, 238, 0.18);
+}
+
+.intro-credential-card {
+  box-shadow: 0 18px 40px rgba(6, 10, 22, 0.7);
+}
+
+.landing-title {
+  animation: titleReveal 750ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.landing-stat-card {
+  animation: cardPopIn 680ms cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+.landing-orbit {
+  position: absolute;
+  border: 1px solid rgba(147, 197, 253, 0.25);
+  border-radius: 999px;
+}
+
+.landing-orbit-a {
+  width: 340px;
+  height: 340px;
+  right: -120px;
+  top: -90px;
+  animation: orbitSpin 24s linear infinite;
+}
+
+.landing-orbit-b {
+  width: 220px;
+  height: 220px;
+  left: -80px;
+  bottom: -70px;
+  border-color: rgba(52, 211, 153, 0.25);
+  animation: orbitSpinReverse 18s linear infinite;
+}
+
+.landing-orbit-c {
+  width: 480px;
+  height: 480px;
+  right: 20%;
+  top: -260px;
+  opacity: 0.4;
+  animation: orbitPulse 12s ease-in-out infinite;
+}
+
+.landing-aurora::before,
+.landing-aurora::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(45px);
+  opacity: 0.5;
+}
+
+.landing-aurora::before {
+  width: 280px;
+  height: 280px;
+  left: -70px;
+  top: -50px;
+  background: rgba(52, 211, 153, 0.25);
+  animation: driftFloat 12s ease-in-out infinite;
+}
+
+.landing-aurora::after {
+  width: 240px;
+  height: 240px;
+  right: -60px;
+  bottom: -40px;
+  background: rgba(56, 189, 248, 0.24);
+  animation: driftFloat 10s ease-in-out infinite reverse;
+}
+
+.landing-blueprint {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 20px 45px rgba(0, 0, 0, 0.45);
+}
+
+.landing-scanline {
+  background: linear-gradient(180deg, transparent 0%, rgba(45, 212, 191, 0.16) 50%, transparent 100%);
+  transform: translateY(-100%);
+  animation: scanlineDrop 4.8s linear infinite;
+}
+
+.landing-step {
+  transition: transform 240ms ease, border-color 240ms ease, background-color 240ms ease;
+}
+
+.landing-step:hover {
+  transform: translateX(4px);
+  border-color: rgba(103, 232, 249, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.auth-glow {
+  position: relative;
+}
+
+.auth-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 38px;
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.55), rgba(255, 122, 89, 0.2), rgba(255, 255, 255, 0.08));
+  filter: blur(18px);
+  opacity: 0.45;
+  z-index: -1;
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.99);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.01);
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes driftFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+.transition-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(52, 211, 153, 0.2), transparent 34%),
+    radial-gradient(circle at 82% 16%, rgba(56, 189, 248, 0.2), transparent 36%),
+    linear-gradient(180deg, rgba(3, 8, 22, 0.82) 0%, rgba(4, 10, 26, 0.96) 100%);
+  animation: fadeThrough 340ms ease-in-out forwards;
+}
+
+.auth-overlay {
+  background: rgba(2, 7, 20, 0.55);
+  backdrop-filter: blur(10px);
+  animation: overlayFadeIn 240ms ease-out both;
+}
+
+.auth-shell {
+  transform-origin: center bottom;
+}
+
+@keyframes fadeThrough {
+  0% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes loginOpen {
+  0% {
+    opacity: 0;
+    transform: translateY(34px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes titleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes cardPopIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes orbitSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitSpinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes orbitPulse {
+  0%, 100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes scanlineDrop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes orbDriftA {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(3vw, 2vw, 0); }
+}
+
+@keyframes orbDriftB {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-3vw, -2vw, 0); }
+}
+
+@keyframes particleDrift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate3d(0, -12px, 0) scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes confettiDrop {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 36px, 0) rotate(180deg);
+    opacity: 0;
+  }
+}

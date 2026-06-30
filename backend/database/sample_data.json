@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "name": "Avery Chen",
+      "email": "demo@gmail.com",
+      "password": "demo1234"
+    }
+  ],
+  "habits": [
+    {
+      "email": "demo@gmail.com",
+      "entries": [
+        { "study_hours": 3.5, "sleep_hours": 7.5, "screen_time_hours": 2.0, "exercise_minutes": 25, "mood": "focused", "log_date": "2026-04-08" },
+        { "study_hours": 4.0, "sleep_hours": 7.0, "screen_time_hours": 1.5, "exercise_minutes": 30, "mood": "steady", "log_date": "2026-04-09" },
+        { "study_hours": 4.5, "sleep_hours": 7.8, "screen_time_hours": 1.2, "exercise_minutes": 35, "mood": "strong", "log_date": "2026-04-10" }
+      ]
+    }
+  ]
+}

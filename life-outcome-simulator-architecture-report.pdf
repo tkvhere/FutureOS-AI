@@ -1,0 +1,788 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R] /Count 7 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 4 0 R >>
+endobj
+5 0 obj
+<< /Length 3836 >>
+stream
+BT
+/F1 10 Tf
+48 740 Td
+13 TL
+(Life Outcome Simulator with AI Coach) Tj
+T*
+(Comprehensive Architecture Report) Tj
+T*
+() Tj
+T*
+(SECTION 1: PROJECT OVERVIEW) Tj
+T*
+(Project Name: Life Outcome Simulator with AI Coach) Tj
+T*
+(Tech Stack: React 18, Vite, Tailwind CSS, Framer Motion, GSAP, Chart.js, face-api.js,) Tj
+T*
+(FastAPI, MongoDB, optional MySQL adapter, scikit-learn, optional PyTorch, httpx, jose,) Tj
+T*
+(passlib) Tj
+T*
+(Frontend Framework: React) Tj
+T*
+(Backend Framework: FastAPI) Tj
+T*
+(Database: MongoDB primary; in-memory fallback; optional MySQL adapter exists but is not used) Tj
+T*
+(by the main app) Tj
+T*
+(ML Models Used: Decision Tree goal-day predictor, optional PyTorch LSTM forecaster,) Tj
+T*
+(deterministic trend forecasting, rule-based fallback, MDP-style policy engine) Tj
+T*
+(Authentication Method: JWT bearer tokens, Gmail-only account policy, password hashing,) Tj
+T*
+(verification code flow for signup and re-verification) Tj
+T*
+(APIs Used: FastAPI REST endpoints, OpenAI Chat Completions API when configured, browser) Tj
+T*
+(MediaDevices camera API, face-api.js, MongoDB driver API, optional MySQL connector API) Tj
+T*
+() Tj
+T*
+(SECTION 2: FRONTEND STRUCTURE) Tj
+T*
+(App shell: single-page authenticated/unauthenticated container in frontend/src/App.jsx;) Tj
+T*
+(purpose is orchestration of all flows; APIs used: /auth/login, /auth/signup, /auth/verify,) Tj
+T*
+(/auth/resend-verification, /auth/me, /habits/add, /habits/history, /simulate, /forecast,) Tj
+T*
+(/mdp/optimal, /compare, /chatbot; connected components: AuthPanel, HabitForm, MetricCard,) Tj
+T*
+(LineChartPanel, ChatPanel, ComparisonChart, OnboardingWizard, GoalMissionPanel,) Tj
+T*
+(DigitalTwinPanel, PredictionStoryPanel, SystemStatusPanel, ProductivityHeatmapPanel,) Tj
+T*
+(FaceMoodSection, ProfileDrawer, GsapIntroScene, HeroSection) Tj
+T*
+(LandingPage: standalone landing experience in frontend/src/pages/LandingPage.jsx; purpose is) Tj
+T*
+(alternate marketing/overview shell; APIs: none; connected components: none; status: unused) Tj
+T*
+(in current mount path) Tj
+T*
+(Auth overlay: login/signup/verify modal overlay in App.jsx; purpose is authentication) Tj
+T*
+(gateway; APIs: auth endpoints; connected components: AuthPanel, GsapIntroScene) Tj
+T*
+(OnboardingWizard: first-run onboarding modal; purpose is explain baseline/simulation/coach) Tj
+T*
+(loop; APIs: none; connected components: App state only) Tj
+T*
+(ProfileDrawer: slide-out profile sidebar; purpose is edit/display profile metadata; APIs:) Tj
+T*
+(none directly; connected components: App user state) Tj
+T*
+(HeroSection: authenticated top summary; purpose is greet user and show system score/goal) Tj
+T*
+(mode; APIs: none directly; connected components: App shell) Tj
+T*
+(HabitForm: habit logging form; purpose is capture study, sleep, screen, exercise, mood;) Tj
+T*
+(APIs: /habits/add via App handler; connected components: MetricCard, GoalMissionPanel,) Tj
+T*
+(realtimeEngine outputs) Tj
+T*
+(GoalMissionPanel: goal switcher and missions; purpose is choose exam/job/focus and show XP;) Tj
+T*
+(APIs: none directly; connected components: HabitForm, App gamification state) Tj
+T*
+(MetricCard: reusable KPI card; purpose is show summary metrics; APIs: none; connected) Tj
+T*
+(components: App shell) Tj
+T*
+(LineChartPanel: reusable line chart card; purpose is render habit and forecast trends; APIs:) Tj
+T*
+(none directly; connected components: Chart.js, react-chartjs-2) Tj
+T*
+(DigitalTwinPanel: holographic avatar; purpose is render synthetic twin state and live) Tj
+T*
+(scores; APIs: none directly; connected components: realtimeEngine.buildTwinState and App) Tj
+T*
+(live scores) Tj
+T*
+(FaceMoodSection: webcam mood analysis panel; purpose is infer mood from face expressions and) Tj
+T*
+(feed live mood to the app; APIs: browser MediaDevices and face-api.js models; connected) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 6 0 R >>
+endobj
+7 0 obj
+<< /Length 3976 >>
+stream
+BT
+/F1 10 Tf
+48 740 Td
+13 TL
+(components: HabitForm live mood, App liveInputs) Tj
+T*
+(EmotionDetector: hidden alternate emotion detector; purpose is same camera/mood inference in) Tj
+T*
+(a lighter wrapper; APIs: browser MediaDevices and face-api.js; connected components: none in) Tj
+T*
+(current mount path) Tj
+T*
+(ComparisonChart: bar chart comparing current vs ideal life; purpose is show outcome lift;) Tj
+T*
+(APIs: /compare data provided by App; connected components: Chart.js, react-chartjs-2) Tj
+T*
+(ChatPanel: AI coach chat input/output; purpose is ask for guidance and stream replies; APIs:) Tj
+T*
+(/chatbot via App handler; connected components: App messages state) Tj
+T*
+(PredictionStoryPanel: narrative forecast panel; purpose is turn projections into readable) Tj
+T*
+(story text; APIs: none directly; connected components: App forecast state) Tj
+T*
+(SystemStatusPanel: telemetry/status card; purpose is show forecast method and system state;) Tj
+T*
+(APIs: none directly; connected components: App forecast method) Tj
+T*
+(ProductivityHeatmapPanel: heatmap visualization; purpose is show rhythm intensity across 4) Tj
+T*
+(weeks; APIs: none directly; connected components: App history/live scores) Tj
+T*
+(DashboardHeader: alternate header component; purpose is dashboard greeting; APIs: none;) Tj
+T*
+(connected components: none in current mount path) Tj
+T*
+(components/index.js: partial re-export barrel; purpose is convenience export; APIs: none;) Tj
+T*
+(connected components: AuthPanel, HabitForm, MetricCard) Tj
+T*
+(App.js: compatibility re-export of App.jsx; purpose is alternate import path; APIs: none;) Tj
+T*
+(connected components: App.jsx) Tj
+T*
+(Navigation and control items: close login, sign up/log in toggle, social auth placeholders,) Tj
+T*
+(sign out, open profile, onboarding next/back/skip, goal mode buttons, camera start/stop,) Tj
+T*
+(resend verification; purpose is UI state control; APIs: only those triggered by their parent) Tj
+T*
+(forms/buttons) Tj
+T*
+() Tj
+T*
+(SECTION 3: BACKEND STRUCTURE) Tj
+T*
+(Routes and endpoints:) Tj
+T*
+(GET /health - health check; inputs none; outputs app status JSON; dependencies FastAPI) Tj
+T*
+(middleware) Tj
+T*
+(POST /auth/signup - create Gmail-only user and issue verification code; inputs UserCreate;) Tj
+T*
+(outputs SignupResponse; dependencies auth_service.signup_user and users collection) Tj
+T*
+(POST /auth/login - verify verified user and issue JWT; inputs UserLogin; outputs) Tj
+T*
+(TokenResponse; dependencies auth_service.login_user and create_access_token) Tj
+T*
+(POST /auth/verify - confirm verification code and activate account; inputs) Tj
+T*
+(VerificationRequest; outputs TokenResponse; dependencies auth_service.verify_email_code and) Tj
+T*
+(create_access_token) Tj
+T*
+(POST /auth/resend-verification - reissue verification code; inputs) Tj
+T*
+(ResendVerificationRequest; outputs SignupResponse; dependencies) Tj
+T*
+(auth_service.resend_verification_code) Tj
+T*
+(GET /auth/me - return current user; inputs Authorization header; outputs UserPublic;) Tj
+T*
+(dependencies authenticate_bearer and build_public_user) Tj
+T*
+(POST /habits/add - save habit log and summary; inputs HabitCreate plus JWT; outputs entry,) Tj
+T*
+(summary, user; dependencies habit_service.add_habit_log) Tj
+T*
+(GET /habits/history - return history and aggregates; inputs JWT; outputs) Tj
+T*
+(HabitHistoryResponse-like JSON; dependencies habit_service.get_user_history) Tj
+T*
+(GET /simulate - return simulation projections and policy; inputs JWT; outputs simulation) Tj
+T*
+(payload; dependencies habit_service.get_user_history, get_latest_profile, simulator, policy,) Tj
+T*
+(forecaster, goal_days_predictor) Tj
+T*
+(GET /forecast - return 30-day forecast and goal ETA; inputs JWT; outputs forecast payload;) Tj
+T*
+(dependencies forecaster and goal_days_predictor) Tj
+T*
+(GET /mdp/optimal - return optimal next action; inputs JWT; outputs optimal decision payload;) Tj
+T*
+(dependencies value_iteration and recommend_actions) Tj
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 8 0 R >>
+endobj
+9 0 obj
+<< /Length 3694 >>
+stream
+BT
+/F1 10 Tf
+48 740 Td
+13 TL
+(GET /compare - compare current and ideal trajectories; inputs JWT; outputs comparison) Tj
+T*
+(payload; dependencies compare_current_vs_ideal) Tj
+T*
+(POST /chatbot - generate coach reply; inputs ChatRequest plus JWT; outputs reply and) Tj
+T*
+(signals; dependencies chatbot_service.generate_coach_reply) Tj
+T*
+(Services:) Tj
+T*
+(auth_service.py - handles Gmail normalization, password hashing/verification, JWT) Tj
+T*
+(creation/decoding, signup, verification, login, resend, public user construction; inputs) Tj
+T*
+(auth payloads and email/code; outputs user docs, tokens, user summaries; dependencies) Tj
+T*
+(database, passlib, jose, SMTP, scoring_service) Tj
+T*
+(habit_service.py - handles habit insertion, history aggregation, latest profile synthesis;) Tj
+T*
+(inputs habit payloads and user doc; outputs entry/history/profile; dependencies) Tj
+T*
+(goal_service, scoring_service, database) Tj
+T*
+(scoring_service.py - handles score, streak, level, badge logic; inputs habits/history;) Tj
+T*
+(outputs score summaries; dependencies date/time only) Tj
+T*
+(goal_service.py - generates goal plans; inputs goal mode and habit metrics; outputs) Tj
+T*
+(goal_plan dictionaries; dependencies none beyond application logic) Tj
+T*
+(chatbot_service.py - handles coach response generation; inputs user and message; outputs) Tj
+T*
+(reply and signals; dependencies httpx, OpenAI API, habit_service, environment variables) Tj
+T*
+(Utilities:) Tj
+T*
+(backend/main.py - app bootstrap, middleware, health route, router registration, rate) Tj
+T*
+(limiting) Tj
+T*
+(backend/database/connection.py - MongoDB plus in-memory fallback adapter and to_iso helper) Tj
+T*
+(backend/database/init_db.py - loads sample data when collections are empty) Tj
+T*
+(backend/database/mysql_connection.py - optional MySQL adapter mirroring users/habits schema;) Tj
+T*
+(not used by main app) Tj
+T*
+(ML modules:) Tj
+T*
+(backend/ml/forecasting.py - deterministic trend projection helpers) Tj
+T*
+(backend/ml/lstm_forecasting.py - optional PyTorch LSTM forecaster with fallback to trend) Tj
+T*
+(projection) Tj
+T*
+(backend/ml/policy.py - MDP-style value iteration and recommendations) Tj
+T*
+(backend/ml/simulator.py - future outcome simulation and current-vs-ideal comparison) Tj
+T*
+(backend/ml/decision_tree_goal_predictor.py - decision tree goal ETA predictor with persisted) Tj
+T*
+(pkl model) Tj
+T*
+(Database collections:) Tj
+T*
+(users, habits) Tj
+T*
+() Tj
+T*
+(SECTION 4: DATABASE) Tj
+T*
+(Collections/tables and schemas:) Tj
+T*
+(users / users table - fields: _id string, name string, email string, password_hash string,) Tj
+T*
+(is_verified boolean, streak int, level string, badges list, created_at datetime/ISO,) Tj
+T*
+(verification_code_hash string, verification_expires_at datetime/ISO, verification_sent_at) Tj
+T*
+(datetime/ISO; relationship: one user to many habits through habits.user_id) Tj
+T*
+(habits / habits table - fields: _id string, user_id string, study_hours float, sleep_hours) Tj
+T*
+(float, screen_time_hours float, exercise_minutes int, mood string, log_date date/ISO, goal) Tj
+T*
+(string, goal_plan object, score float, created_at datetime/ISO; relationship: many habits) Tj
+T*
+(belong to one user) Tj
+T*
+(Pydantic models: UserCreate, UserLogin, VerificationRequest, ResendVerificationRequest,) Tj
+T*
+(UserPublic, TokenResponse, SignupResponse, HabitCreate, HabitResponse, HabitHistoryResponse,) Tj
+T*
+(SimulationResponse, ComparisonResponse, ChatRequest, ChatResponse, OptimalDecisionResponse,) Tj
+T*
+(DailyScoreResponse) Tj
+T*
+(Database behavior: MongoDB when reachable; in-memory fallback otherwise; MySQL adapter) Tj
+T*
+(defines users and habits tables with the same logical model) Tj
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 10 0 R >>
+endobj
+11 0 obj
+<< /Length 3600 >>
+stream
+BT
+/F1 10 Tf
+48 740 Td
+13 TL
+() Tj
+T*
+(SECTION 5: MACHINE LEARNING) Tj
+T*
+(Decision Tree usage: predicts days_to_goal from study hours, sleep hours, screen time, and) Tj
+T*
+(encoded mood using a DecisionTreeRegressor trained on backend/datasets/user_behavior.csv;) Tj
+T*
+(fallback is a rule-based estimator; metrics include train/test R2, MAE, MSE, RMSE, LOOCV) Tj
+T*
+(MAE, within-15-days, within-30-days, dataset size) Tj
+T*
+(Forecast system: optional PyTorch LSTM uses sequential habit history to predict 30 days of) Tj
+T*
+(study, sleep, screen time, and exercise; if torch is unavailable or history is too short,) Tj
+T*
+(deterministic trend forecasting is used; no explicit evaluation metrics are surfaced in the) Tj
+T*
+(code) Tj
+T*
+(Simulation engine: simulate_future projects 30, 90, and 180 day horizons from the latest) Tj
+T*
+(profile, computes knowledge/productivity/energy/discipline/stress, and provides graph series) Tj
+T*
+(plus current/ideal comparisons) Tj
+T*
+(Digital Twin logic: synthetic twin state is derived from live score averages and goal mode;) Tj
+T*
+(it chooses Optimized, Stable, or At Risk and drives the avatar UI) Tj
+T*
+(Scoring system: calculate_daily_score computes habit score from study, sleep, screen,) Tj
+T*
+(exercise, and goal weights; level is derived from total score thresholds; streak and badges) Tj
+T*
+(are derived from habit history) Tj
+T*
+(Model persistence \(.pkl\): the decision tree predictor persists to) Tj
+T*
+(backend/ml/models/digital_twin_model.pkl and reloads it on startup when available) Tj
+T*
+(Input features: study_hours, sleep_hours, screen_time_hours, exercise_minutes, mood, goal) Tj
+T*
+(mode, and habit history sequences) Tj
+T*
+(Output predictions: score summaries, goal ETA, 30/90/180 day projections, next action) Tj
+T*
+(policy, forecast arrays, twin state) Tj
+T*
+(Evaluation metrics: decision tree metrics are explicit; LSTM has runtime train/no-train) Tj
+T*
+(fallback rather than a report of offline metrics) Tj
+T*
+() Tj
+T*
+(SECTION 6: DIGITAL TWIN) Tj
+T*
+(How twin state is calculated: the backend synthesizes a profile from the latest habit log;) Tj
+T*
+(the frontend converts live scores into an average and categorizes the twin as Optimized,) Tj
+T*
+(Stable, or At Risk) Tj
+T*
+(Inputs used: study hours, sleep hours, screen time, exercise minutes, goal mode, mood,) Tj
+T*
+(history entries, and live form values) Tj
+T*
+(Outputs generated: twin status label, average score, avatar ring/progress, tone, hint) Tj
+T*
+(message, and metric cards) Tj
+T*
+(Components involved: HabitForm, GoalMissionPanel, DigitalTwinPanel, realtimeEngine.js,) Tj
+T*
+(habit_service.get_latest_profile, simulator) Tj
+T*
+() Tj
+T*
+(SECTION 7: FORECASTING & SIMULATION) Tj
+T*
+(Forecast workflow: App requests /forecast; backend trains or reuses the LSTM predictor; if) Tj
+T*
+(training is not possible, the trend fallback is used; frontend renders the method,) Tj
+T*
+(confidence, warnings, and chart series) Tj
+T*
+(Simulation workflow: App requests /simulate; backend computes current profile, future) Tj
+T*
+(horizons, MDP policy, recommendation list, and goal days prediction; frontend renders the) Tj
+T*
+(simulation cards and policy summary) Tj
+T*
+(Compare workflow: /compare returns current_life, ideal_life, and improvement_percent;) Tj
+T*
+(frontend renders a comparison bar chart and improvement text) Tj
+T*
+(Goal prediction workflow: the decision tree predictor loads the persisted pkl model or) Tj
+T*
+(trains a fresh one from CSV and predicts days_to_goal with either decision_tree or) Tj
+T*
+(rule_based method) Tj
+T*
+() Tj
+T*
+(SECTION 8: AUTHENTICATION) Tj
+ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 12 0 R >>
+endobj
+13 0 obj
+<< /Length 3743 >>
+stream
+BT
+/F1 10 Tf
+48 740 Td
+13 TL
+(Login flow: the login form sends email and password to /auth/login; backend checks) Tj
+T*
+(Gmail-only format, password hash, and verification status; on success a JWT and public user) Tj
+T*
+(are returned) Tj
+T*
+(Register flow: signup sends name, email, password to /auth/signup; backend creates the user,) Tj
+T*
+(issues a verification code, and either emails it or returns it locally in dev mode) Tj
+T*
+(JWT usage: HS256 token signed with SECRET_KEY, stored in localStorage, decoded on the client) Tj
+T*
+(for expiry handling, and sent as Authorization: Bearer <token> on protected calls) Tj
+T*
+(User session handling: session data is restored from localStorage on load, auto-expires when) Tj
+T*
+(the token expires, and is cleared on logout or invalid-token errors) Tj
+T*
+() Tj
+T*
+(SECTION 9: GAMIFICATION) Tj
+T*
+(XP systems: implemented in realtimeEngine.js and GoalMissionPanel) Tj
+T*
+(Levels: implemented as Beginner, Focused, Elite) Tj
+T*
+(Coins: Not implemented) Tj
+T*
+(Badges: Momentum Starter, Consistency Core, Deep Work Streak, Sleep Architect) Tj
+T*
+(Streaks: implemented and shown in backend summaries and frontend profile/score cards) Tj
+T*
+(Reputation: Not implemented) Tj
+T*
+() Tj
+T*
+(SECTION 10: FILE TREE) Tj
+T*
+(Root: README.md, docker-compose.yml, start-local.ps1, .gitignore) Tj
+T*
+(Backend: __init__.py, main.py, requirements.txt, .env.example, database/connection.py,) Tj
+T*
+(database/init_db.py, database/mysql_connection.py, database/sample_data.json,) Tj
+T*
+(models/schemas.py, routes/auth.py, routes/habits.py, routes/simulation.py,) Tj
+T*
+(routes/chatbot.py, services/auth_service.py, services/habit_service.py,) Tj
+T*
+(services/scoring_service.py, services/goal_service.py, services/chatbot_service.py,) Tj
+T*
+(ml/forecasting.py, ml/lstm_forecasting.py, ml/policy.py, ml/simulator.py,) Tj
+T*
+(ml/decision_tree_goal_predictor.py, ml/models/digital_twin_model.pkl,) Tj
+T*
+(datasets/user_behavior.csv, scripts/export_db.py, scripts/generate_balanced_dataset.py,) Tj
+T*
+(scripts/generate_seed_export.py, scripts/import_db.py, scripts/seed_db.py,) Tj
+T*
+(scripts/smoke_test_api.py, tests/test_api.py) Tj
+T*
+(Frontend: package.json, package-lock.json, vite.config.js, postcss.config.js,) Tj
+T*
+(tailwind.config.js, playwright.config.js, index.html, Dockerfile, .env.example, .env.local,) Tj
+T*
+(nginx/default.conf, src/App.jsx, src/App.js, src/main.jsx, src/index.css,) Tj
+T*
+(src/services/api.js, src/services/realtimeEngine.js, src/pages/LandingPage.jsx,) Tj
+T*
+(src/components/AuthPanel.jsx, ChatPanel.jsx, ComparisonChart.jsx, DashboardHeader.jsx,) Tj
+T*
+(DigitalTwinPanel.jsx, EmotionDetector.jsx, FaceMoodSection.jsx, GoalMissionPanel.jsx,) Tj
+T*
+(GsapIntroScene.jsx, HabitForm.jsx, HeroSection.jsx, LineChartPanel.jsx, MetricCard.jsx,) Tj
+T*
+(OnboardingWizard.jsx, PredictionStoryPanel.jsx, ProductivityHeatmapPanel.jsx,) Tj
+T*
+(ProfileDrawer.jsx, SystemStatusPanel.jsx, components/index.js) Tj
+T*
+(Repository and CI: .github/workflows/ci.yml) Tj
+T*
+() Tj
+T*
+(SECTION 11: FEATURE INVENTORY) Tj
+T*
+(Feature Name | Purpose | Location | Status) Tj
+T*
+(Auth login/signup/verify | account lifecycle and JWT login | backend/routes/auth.py,) Tj
+T*
+(frontend/src/components/AuthPanel.jsx | Active) Tj
+T*
+(Local dev verification code | dev-mode verification without SMTP |) Tj
+T*
+(backend/services/auth_service.py | Active) Tj
+T*
+(Habit logging | capture daily behavior and score it | backend/routes/habits.py,) Tj
+T*
+(frontend/src/components/HabitForm.jsx | Active) Tj
+T*
+(Goal mode switching | choose exam/job/focus targets |) Tj
+T*
+(frontend/src/components/GoalMissionPanel.jsx | Active) Tj
+T*
+(Gamification | XP, level, badges, streaks, missions | backend/services/scoring_service.py,) Tj
+ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 14 0 R >>
+endobj
+15 0 obj
+<< /Length 3614 >>
+stream
+BT
+/F1 10 Tf
+48 740 Td
+13 TL
+(frontend/src/components/GoalMissionPanel.jsx | Active) Tj
+T*
+(Hero dashboard | main authenticated cockpit | frontend/src/components/HeroSection.jsx |) Tj
+T*
+(Active) Tj
+T*
+(Digital twin avatar | animated twin visualization |) Tj
+T*
+(frontend/src/components/DigitalTwinPanel.jsx | Active) Tj
+T*
+(Mood camera | webcam expression analysis | frontend/src/components/FaceMoodSection.jsx |) Tj
+T*
+(Active) Tj
+T*
+(Comparison chart | compare current vs ideal life |) Tj
+T*
+(frontend/src/components/ComparisonChart.jsx, backend/routes/simulation.py | Active) Tj
+T*
+(Chat coach | conversational AI guidance | frontend/src/components/ChatPanel.jsx,) Tj
+T*
+(backend/routes/chatbot.py | Active) Tj
+T*
+(Forecast chart | 30-day forecast display | frontend/src/components/LineChartPanel.jsx,) Tj
+T*
+(backend/routes/simulation.py | Active) Tj
+T*
+(Simulation engine | 30/90/180-day outcomes | backend/ml/simulator.py | Active) Tj
+T*
+(MDP policy engine | next best action selection | backend/ml/policy.py | Active) Tj
+T*
+(Decision tree ETA model | predict days to goal | backend/ml/decision_tree_goal_predictor.py) Tj
+T*
+(| Active) Tj
+T*
+(LSTM forecaster | optional sequence forecast model | backend/ml/lstm_forecasting.py | Active) Tj
+T*
+(Trend fallback forecast | deterministic fallback projections | backend/ml/forecasting.py,) Tj
+T*
+(backend/ml/lstm_forecasting.py | Active) Tj
+T*
+(Onboarding wizard | first-run guidance | frontend/src/components/OnboardingWizard.jsx |) Tj
+T*
+(Active) Tj
+T*
+(Profile drawer | profile editing and display | frontend/src/components/ProfileDrawer.jsx |) Tj
+T*
+(Active) Tj
+T*
+(Intro sequence | animated login intro | frontend/src/components/GsapIntroScene.jsx | Active) Tj
+T*
+(Auth overlay shell | login and signup surface | frontend/src/App.jsx | Active) Tj
+T*
+(LandingPage component | standalone landing design | frontend/src/pages/LandingPage.jsx |) Tj
+T*
+(Unused) Tj
+T*
+(DashboardHeader component | alternate dashboard header |) Tj
+T*
+(frontend/src/components/DashboardHeader.jsx | Unused) Tj
+T*
+(EmotionDetector component | alternate hidden detector |) Tj
+T*
+(frontend/src/components/EmotionDetector.jsx | Unused) Tj
+T*
+(components/index.js barrel | partial re-export barrel | frontend/src/components/index.js |) Tj
+T*
+(Unused) Tj
+T*
+(App.js re-export | compatibility import path | frontend/src/App.js | Active) Tj
+T*
+(MySQL adapter | optional SQL storage adapter | backend/database/mysql_connection.py |) Tj
+T*
+(Partially Implemented) Tj
+T*
+(Seed loader | load demo records into empty store | backend/database/init_db.py | Active) Tj
+T*
+(Database import/export scripts | manual data tooling | backend/scripts/import_db.py,) Tj
+T*
+(backend/scripts/export_db.py | Partially Implemented) Tj
+T*
+(Balanced dataset generator | training CSV generator |) Tj
+T*
+(backend/scripts/generate_balanced_dataset.py | Active support tool) Tj
+T*
+(Smoke test script | live API verification | backend/scripts/smoke_test_api.py | Active) Tj
+T*
+(support tool) Tj
+T*
+(CI pipeline | tests, smoke test, frontend build, E2E | .github/workflows/ci.yml | Active) Tj
+T*
+(Docker Compose stack | local multi-service deployment | docker-compose.yml | Active) Tj
+T*
+(Tailwind theme | design system tokens | frontend/tailwind.config.js | Active) Tj
+T*
+(Global app styling | visuals and animation rules | frontend/src/index.css | Active) Tj
+T*
+() Tj
+T*
+(SECTION 12: FUTURE JOURNEY COMPATIBILITY) Tj
+T*
+(KEEP: auth flow, habit logging, goal switching, gamification, hero dashboard, digital twin) Tj
+T*
+(avatar, mood camera, comparison chart, chat coach, forecast chart, simulation engine, MDP) Tj
+ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 16 0 R >>
+endobj
+17 0 obj
+<< /Length 1658 >>
+stream
+BT
+/F1 10 Tf
+48 740 Td
+13 TL
+(policy engine, decision tree ETA model, LSTM forecaster, trend fallback forecast, onboarding) Tj
+T*
+(wizard, profile drawer, intro sequence, auth overlay shell, App.js re-export, seed loader,) Tj
+T*
+(smoke test script, CI pipeline, Docker Compose stack, Tailwind theme, global app styling) Tj
+T*
+(MERGE: components/index.js barrel) Tj
+T*
+(MOVE: MySQL adapter, database import/export scripts, balanced dataset generator) Tj
+T*
+(REMOVE: LandingPage component, DashboardHeader component, EmotionDetector component) Tj
+T*
+() Tj
+T*
+(SECTION 13: DEPENDENCY MAP) Tj
+T*
+(AuthPanel -> apiRequest -> /auth/login, /auth/signup, /auth/verify,) Tj
+T*
+(/auth/resend-verification -> auth_service -> users collection) Tj
+T*
+(HabitForm -> /habits/add -> habit_service -> goal_service + scoring_service -> habits) Tj
+T*
+(collection) Tj
+T*
+(App shell -> /habits/history, /simulate, /mdp/optimal, /compare, /forecast -> habit_service) Tj
+T*
+(+ simulator + policy + forecaster + goal_days_predictor) Tj
+T*
+(ChatPanel -> /chatbot -> chatbot_service -> OpenAI API when configured or fallback reply) Tj
+T*
+(generator) Tj
+T*
+(FaceMoodSection -> browser camera + face-api.js -> live mood -> HabitForm and App liveInputs) Tj
+T*
+(GoalMissionPanel -> realtimeEngine -> XP, missions, levels -> App dashboard state) Tj
+T*
+(DigitalTwinPanel -> realtimeEngine + live scores -> twin visualization) Tj
+T*
+(Simulation engine -> latest profile -> projections and MDP policy) Tj
+T*
+(Forecast system -> habit history -> LSTM or trend forecast -> forecast chart) Tj
+T*
+(Database connection -> MongoDB if reachable -> memory fallback if not -> all route services) Tj
+ET
+endstream
+endobj
+xref
+0 18
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000161 00000 n 
+0000000231 00000 n 
+0000000357 00000 n 
+0000004245 00000 n 
+0000004371 00000 n 
+0000008399 00000 n 
+0000008525 00000 n 
+0000012271 00000 n 
+0000012399 00000 n 
+0000016052 00000 n 
+0000016180 00000 n 
+0000019976 00000 n 
+0000020104 00000 n 
+0000023771 00000 n 
+0000023899 00000 n 
+trailer
+<< /Size 18 /Root 1 0 R >>
+startxref
+25610
+%%EOF

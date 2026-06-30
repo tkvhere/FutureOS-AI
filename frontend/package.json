@@ -1,0 +1,31 @@
+{
+  "name": "life-outcome-simulator-ui",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:e2e:setup": "playwright install chromium",
+    "test:e2e": "npm run test:e2e:setup && playwright test",
+    "test:e2e:ui": "playwright test --ui"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.0",
+    "face-api.js": "^0.22.2",
+    "framer-motion": "^11.11.10",
+    "gsap": "^3.12.5",
+    "react": "^18.3.1",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.10",
+    "vite": "^5.4.7"
+  }
+}

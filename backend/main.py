@@ -14,6 +14,8 @@ from backend.routes.chatbot import router as chatbot_router
 from backend.routes.habits import router as habits_router
 from backend.routes.simulation import router as simulation_router
 from backend.routes.dream import router as dream_router
+from backend.routes.reality import router as reality_router
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -71,3 +73,4 @@ app.include_router(habits_router)
 app.include_router(simulation_router)
 app.include_router(chatbot_router)
 app.include_router(dream_router)
+app.include_router(reality_router)
